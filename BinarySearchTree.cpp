@@ -59,6 +59,41 @@ public:
         return root;
     }
 
+    void inorder(Node* root)
+    {
+        if (root != nullptr)
+        {
+            inorder(root->leftNode);
+            std::cout << root->key << " -> ";
+            inorder(root->rightNode);
+        }
+
+    }
+
+
+    void preorder(Node* root)
+    {
+        if (root != nullptr)
+        {
+            std::cout << root->key << " -> ";
+            inorder(root->leftNode);
+            inorder(root->rightNode);
+        }
+
+    }
+
+
+    void postorder(Node* root)
+    {
+        if (root != nullptr)
+        {
+            inorder(root->leftNode);
+            inorder(root->rightNode);
+            std::cout << root->key << " -> ";
+        }
+ 
+    }
+
 
 };
 
@@ -74,7 +109,7 @@ int main()
     tree.insert(2);
     tree.insert(16);
 
-    std::cout << tree.getRoot()->rightNode->rightNode->key << std::endl;
+    tree.preorder(tree.getRoot());
 
     return 0;
 }
